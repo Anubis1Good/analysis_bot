@@ -10,6 +10,7 @@ df_count = pd.DataFrame([],columns=stock_groups)
 df_part = pd.DataFrame([],columns=stock_groups)
 df_tp = pd.DataFrame([],columns=stock_groups)
 df_ap = pd.DataFrame([],columns=stock_groups)
+df_files = pd.DataFrame([],columns=stock_groups)
 list_docs = os.listdir(docs_folder)
 for doc in list_docs:
     file_path = os.path.join(docs_folder,doc)
@@ -23,6 +24,7 @@ for doc in list_docs:
     df_part.loc[doc]=temp['part']
     df_tp.loc[doc]=temp['total_percent']
     df_ap.loc[doc]=temp['average_percent']
+    df_files.loc[doc]=temp['files']
     df_ap['mean'] = round(df_ap.mean(axis=1),3)
     df_ap.insert(0, 'mean', df_ap.pop('mean'))
     df_rq_sum['count_positive'] = df_rq_sum[df_rq_sum>0].count(axis=1)
@@ -35,4 +37,5 @@ with pd.ExcelWriter('total_output.xlsx') as writer:
     df_count.to_excel(writer,sheet_name='count') 
     df_part.to_excel(writer,sheet_name='part') 
     df_tp.to_excel(writer,sheet_name='tp') 
+    df_files.to_excel(writer,sheet_name='files') 
 
