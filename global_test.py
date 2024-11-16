@@ -47,4 +47,4 @@ def main(folder:str):
             df.to_excel(writer,sheet_name='total') 
             res.to_excel(writer,sheet_name='sum_count') 
 if __name__ == '__main__':
-    main('PTA2_DDC_5')
+    main('LTA1_C')
