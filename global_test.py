@@ -41,10 +41,11 @@ def main(folder:str):
         res['rq_sum'] = df.groupby('name')['real_quity'].agg(['sum'])['sum']
         res['average_percent'] = round(res['total_percent']/ res['count'],2)
         res['files'] = i
+        res['amount_nc'] = df[(df['close'] == "")|(pd.isnull(df['close']))].count().iloc[0]
         res.insert(0, 'rq_sum', res.pop('rq_sum'))
         path_output = os.path.join('total_res',folder +"_output.xlsx")
         with pd.ExcelWriter(path_output) as writer:  
             df.to_excel(writer,sheet_name='total') 
             res.to_excel(writer,sheet_name='sum_count') 
 if __name__ == '__main__':
-    main('LTA1_C')
+    main('PTA4_WDDC_100_10_20')
