@@ -48,4 +48,4 @@ def main(folder:str):
             df.to_excel(writer,sheet_name='total') 
             res.to_excel(writer,sheet_name='sum_count') 
 if __name__ == '__main__':
-    main('test')
+    main('PTA8_WDOBBYFrRL_15_1p5_15_30')
